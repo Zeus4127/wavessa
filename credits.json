@@ -1,0 +1,211 @@
+{
+ "note": "Free stock media used as placeholders until we have photos of our own Studio. Unsplash and Pexels licences allow free commercial use without credit; credit is given here anyway. Do not sell the files on their own.",
+ "photos": [
+  {
+   "file": "img/photo/cafe-industrial.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1521017432531-fbd92d768814",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/cafe-moody.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/cafe-bright.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1554118811-1e0d58224f24",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/cafe-window.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1445116572660-236099ec97a0",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/cafe-counter.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1453614512568-c4024d13c247",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/cafe-sign.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/cafe-busy.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1525610553991-2bede1a236e2",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/cafe-plants.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1600093463592-8e36ae95ef56",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/coffee-pourover.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1442512595331-e89e73853f31",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/coffee-latte.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/coffee-portafilter.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1511920170033-f8396924c348",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/coffee-latte2.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1572442388796-11668a67e53d",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/coffee-cheers.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/coffee-beans.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1447933601403-0c6688de566e",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/coffee-cupping.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1508766917616-d22f3f1eea14",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/food-plates.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/bkk-chinatown-night.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1508009603885-50cf7c579365",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/bkk-temple.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1563492065599-3520f775eeed",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/dev-watch.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/dev-sunglasses.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/dev-sunglasses-beach.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/well-yoga.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/well-meditate.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1506126613408-eca07ce68773",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/well-swim.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1530549387789-4c1017266635",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/well-run.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/well-sleep.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/well-bedroom.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/well-sofa.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc",
+   "license": "Unsplash License https://unsplash.com/license"
+  },
+  {
+   "file": "img/photo/well-lake.jpg",
+   "source": "Unsplash",
+   "image": "https://images.unsplash.com/photo-1508672019048-805c876b67e2",
+   "license": "Unsplash License https://unsplash.com/license"
+  }
+ ],
+ "videos": [
+  {
+   "file": "video/latte-pour.mp4",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/video/coffee-making-art-by-a-bartender-2909914/",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "video/meditate-sea.mp4",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/video/silhouette-of-a-woman-meditating-on-a-rock-by-the-sea-10638262/",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "video/bkk-bts-street.mp4",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/video/bangkok-1-18356611/",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "video/lounge-chairs.mp4",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/video/video-of-a-coffee-shop-interior-7652196/",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "video/latte-art-top.mp4",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/video/close-up-video-of-person-making-latte-art-7487668/",
+   "license": "Pexels License https://www.pexels.com/license/"
+  }
+ ]
+}
