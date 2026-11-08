@@ -32,4 +32,4 @@ A LINE Official Account link or a form service can replace this later.
 
 ## Stock photos and video
 
-`img/photo/` (Unsplash) and `video/` (Pexels, mp4 with a poster jpg) are free-licence placeholders. Sources are in `credits.json`. Replace them with photos of the real Studio when you have them, keeping the same file names. Videos pause when off screen and show the still poster for visitors who turn motion off.
+`img/photo/` (Unsplash, WebP) and `video/` (Pexels, mp4 with a poster jpg) are free-licence placeholders. Sources are in `credits.json`. Replace them with photos of the real Studio when you have them, keeping the same file names. Videos pause when off screen and show the still poster for visitors who turn motion off.

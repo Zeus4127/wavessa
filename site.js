@@ -157,7 +157,7 @@ tiersEl.innerHTML=TIERS.map((t,i)=>`<button class="tier" data-i="${i}" aria-pres
 swEl.innerHTML=FIN.map((f,i)=>`<button class="sw" style="background:${f.s}" aria-label="${f.n}" aria-pressed="${i===0}" data-i="${i}"></button>`).join('');
 function updCfg(){const t=TIERS[cfg.tier];tiersEl.querySelectorAll('.tier').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.i===cfg.tier));
   swEl.querySelectorAll('.sw').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.i===cfg.fin));
-  $('cfgPrice').innerHTML=thb(t.p)+`<small>incl. GST · target price${t.only?' · collect in Studio':''}</small>`;
+  $('cfgPrice').innerHTML=thb(t.p)+(t.p===7900?'<small class="found">Founding pre-order A$329</small>':'')+`<small>incl. GST · target price${t.only?' · collect in Studio':''}</small>`;
   $('finName').textContent=FIN[cfg.fin].n;
   $('cfgBadge').textContent=FIN[cfg.fin].n+' · live 3D';}
 tiersEl.onclick=e=>{const b=e.target.closest('.tier');if(b){cfg.tier=+b.dataset.i;updCfg()}};
@@ -246,7 +246,7 @@ const BEANS=[
 const plusI='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>';
 let beanPlan=0;const BEAN_PLANS=[['One bag',''],['Every 2 weeks',' · every 2 weeks'],['Every 4 weeks',' · every 4 weeks']];
 (function(){const h=document.querySelector('.beans-head');if(!h||!document.getElementById('beans'))return;const t=document.createElement('div');t.className='sub-tog';t.setAttribute('role','group');t.setAttribute('aria-label','How often');t.innerHTML=BEAN_PLANS.map((p,i)=>`<button data-bp="${i}" aria-pressed="${i===0}">${p[0]}${i?' <em>-10%</em>':''}</button>`).join('');h.after(t);t.onclick=e=>{const b=e.target.closest('[data-bp]');if(!b)return;beanPlan=+b.dataset.bp;t.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));document.querySelectorAll('#beans [data-bprice]').forEach(el=>{const p=+el.dataset.bprice;el.textContent=thb(beanPlan?Math.round(p*.9/10)*10:p)})}})();
-$('beans').innerHTML=BEANS.map((b,i)=>`<article class="bean reveal"><div class="bag-art" style="--bc:${b.c};--bi:url(img/photo/${['coffee-beans','coffee-cupping','coffee-portafilter'][i%3]}.jpg)"><b><small>${b.r}</small>${b.n}</b></div>
+$('beans').innerHTML=BEANS.map((b,i)=>`<article class="bean reveal"><div class="bag-art" style="--bc:${b.c};--bi:url(img/photo/${['coffee-beans','coffee-cupping','coffee-portafilter'][i%3]}.webp)"><b><small>${b.r}</small>${b.n}</b></div>
   <dl><dt>Altitude</dt><dd>${b.alt}</dd><dt>Process</dt><dd>${b.pr}</dd><dt>Roast</dt><dd><span class="roast" aria-label="Roast ${b.roast} of 5">${[1,2,3,4,5].map(k=>`<i class="${k<=b.roast?'f':''}"></i>`).join('')}</span></dd></dl>
   <div class="notes">${b.notes.map(n=>`<span>${n}</span>`).join('')}</div>
   <div class="foot"><b><span data-bprice="${b.price}">${thb(b.price)}</span> <small class="muted" style="font:400 .8rem var(--f-b)">250 g</small></b><button class="add" data-bean="${i}" aria-label="Add ${b.n} beans">${plusI}</button></div></article>`).join('');
@@ -526,3 +526,15 @@ const APPS=[['today','Today','Your day, your wellness score and what is next.'],
 /* ---------- Scroll progress ---------- */
 (function(){if(document.querySelector('.door'))return;const b=document.createElement('div');b.className='sprog';document.body.appendChild(b);
   const u=()=>{const h=document.documentElement;b.style.transform=`scaleX(${Math.min(1,h.scrollTop/Math.max(1,h.scrollHeight-innerHeight))})`};addEventListener('scroll',u,{passive:true});u()})();
+
+/* ---------- Magnetic buttons (desktop) ---------- */
+(function(){if(RM||!matchMedia('(pointer:fine)').matches)return;
+  document.querySelectorAll('.btn, .go, .icon-btn').forEach(b=>{b.classList.add('mag');
+    b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();const x=(e.clientX-r.left-r.width/2)*.22,y=(e.clientY-r.top-r.height/2)*.3;b.style.transform=`translate(${x}px,${y}px)`});
+    b.addEventListener('pointerleave',()=>{b.style.transform=''})})})();
+
+/* ---------- First-visit intro on the door page ---------- */
+(function(){if(!document.querySelector('.door')||RM)return;let seen=false;try{seen=sessionStorage.getItem('intro')}catch(e){}if(seen)return;try{sessionStorage.setItem('intro','1')}catch(e){}
+  const d=document.createElement('div');d.className='intro';d.setAttribute('aria-hidden','true');
+  d.innerHTML=`<div><svg viewBox="0 0 32 32" fill="none" stroke-width="2.2" stroke-linecap="round"><circle cx="16" cy="16" r="3.2" fill="#5fe0bf"/><path d="M9.5 9.5a9.2 9.2 0 0 0 0 13" stroke="#5fe0bf"/><path d="M22.5 9.5a9.2 9.2 0 0 1 0 13" stroke="#5fe0bf"/><path d="M5 5a15.5 15.5 0 0 0 0 22" stroke="#eef4f1" opacity=".55"/><path d="M27 5a15.5 15.5 0 0 1 0 22" stroke="#eef4f1" opacity=".55"/></svg><span>${BRAND}<em>Studio</em></span></div>`;
+  document.body.appendChild(d);setTimeout(()=>d.classList.add('go'),1000);setTimeout(()=>d.remove(),2000)})();
