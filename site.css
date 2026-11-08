@@ -697,3 +697,14 @@ body,section{transition:background-color .8s,color .8s}
 .eve-facts div{display:grid;gap:.15rem}.eve-facts b{font:600 1.3rem/1.1 var(--f-d)}.eve-facts span{color:var(--night-muted);font-size:.9rem}
 .eve-facts .btn{justify-self:start;background:var(--amber);color:#2a1a06}
 @media (max-width:900px){.eve-grid{grid-template-columns:1fr 1fr;grid-template-rows:220px 180px 180px}.eg.big{grid-column:span 2;grid-row:auto}.eg.wide{grid-column:span 2}.eve-row{grid-template-columns:1fr}}
+
+/* games strip */
+.games-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:.6rem 2rem;margin:clamp(3rem,7vw,5rem) 0 1.2rem}
+.games-head h3{font-size:clamp(1.6rem,3.2vw,2.4rem);margin-top:.5rem;width:100%}
+.games-head .eyebrow{width:100%}
+.games-row{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(240px,28vw,340px);gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.6rem;overscroll-behavior-x:contain}
+.gcard{margin:0;scroll-snap-align:start;border-radius:var(--r);overflow:hidden;background:#0b0f10;border:1px solid var(--line);position:relative}
+.gcard img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.gcard:hover img{transform:scale(1.05)}
+.gcard figcaption{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1rem;color:#eef4f1}
+.gcard b{font:600 1.05rem/1.2 var(--f-d)}.gcard span{font:500 .7rem/1 var(--f-m);letter-spacing:.1em;text-transform:uppercase;color:var(--mint)}
