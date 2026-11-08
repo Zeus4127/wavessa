@@ -461,7 +461,7 @@ function streetSVG(o,seed){let r=seed*9301+49297;const rnd=()=>(r=(r*9301+49297)
    ============================================================ */
 const APP_NAME="Ryan's Vibe";
 document.querySelectorAll('[data-app]').forEach(e=>e.textContent=APP_NAME);
-const APPS=[['today','Today','Your day, your wellness score and what is next.'],['routine','Routines','Ready-made routines to run back to back.'],['month','Month view','See which days you kept your routine going.'],['breathe','Breathing','Guided breathing with a slow, steady timer.'],['games','Games 18+','Five full adult games for when you are winding down.']];
+const APPS=[['today','Today','Your day, your wellness score and what is next.'],['routine','Routines','Ready-made routines to run back to back.'],['month','Month view','See which days you kept your routine going.'],['breathe','Breathing','Guided breathing with a slow, steady timer.'],['games','Games for all ages','Five full games with worlds and bosses. Cartoon action with no blood, rated PEGI 7.']];
 (function(){const ph=document.getElementById('appPhones'),tabs=document.getElementById('appTabs');if(!ph||!tabs)return;
   let cur=0,timer;
   tabs.innerHTML=APPS.map((a,i)=>`<button role="tab" aria-selected="${i===0}" data-i="${i}"><b>${a[1]}</b><span>${a[2]}</span></button>`).join('');
