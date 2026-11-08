@@ -224,7 +224,7 @@ function wearSVG(id,c){const dark=['Ink','Teal'].includes(c);const f=COL[c],mk=d
   return `<svg viewBox="0 0 240 240" aria-hidden="true"><rect width="240" height="240" fill="${bg}"/><ellipse cx="120" cy="214" rx="70" ry="8" fill="rgba(0,0,0,.08)"/>${S[id]}</svg>`;}
 const wsel={};WEAR.forEach(w=>wsel[w.id]={c:0,s:Math.min(1,w.sizes.length-1)});
 function drawWear(){$('wearGrid').innerHTML=WEAR.map(w=>{const s=wsel[w.id];return `<article class="prod" data-w="${w.id}">
-  <div class="ph" style="cursor:default">${wearSVG(w.id,w.cols[s.c])}</div>
+  <div class="ph photo" style="cursor:default"><img src="img/real/wear-${w.id}.webp" alt="${w.name}" loading="lazy"></div>
   <span class="tag">${w.tag}</span><h3>${w.name}</h3><span class="dim">${w.d}</span>
   <div class="chips" role="group" aria-label="Colour">${w.cols.map((c,i)=>`<button style="background:${COL[c]}" aria-label="${c}" aria-pressed="${i===s.c}" data-c="${i}"></button>`).join('')}</div>
   <div class="sizes" role="group" aria-label="Size">${w.sizes.map((z,i)=>`<button aria-pressed="${i===s.s}" data-s="${i}">${z}</button>`).join('')}</div>
@@ -296,7 +296,7 @@ function say(m){toast.textContent=m;toast.classList.add('on');clearTimeout(tt);t
 function addToBag(it){const f=bag.find(x=>x.key===it.key);if(f)f.q++;else bag.push({...it,q:1});saveBag();say(it.name+' added to your bag')}
 function saveBag(){store.set('studio-bag',bag);const n=bag.reduce((a,b)=>a+b.q,0);const c=$('bagCount');c.textContent=n;c.classList.toggle('on',n>0);drawBag()}
 function drawBag(){const el=$('bagItems');
-  el.innerHTML=bag.length?bag.map((b,i)=>`<div class="it"><div class="th">${b.wear?wearSVG(b.wear,b.col):b.bean?`<div style="width:100%;height:100%;background:${b.bean}"></div>`:`<img src="${img(b.img)}" alt="">`}</div><div><b>${b.name}</b><small>${b.opt} · ${thb(b.price)}</small></div>
+  el.innerHTML=bag.length?bag.map((b,i)=>`<div class="it"><div class="th">${b.wear?`<img src="img/real/wear-${b.wear}.webp" alt="" style="object-fit:cover">`:b.bean?`<div style="width:100%;height:100%;background:${b.bean}"></div>`:`<img src="${img(b.img)}" alt="">`}</div><div><b>${b.name}</b><small>${b.opt} · ${thb(b.price)}</small></div>
     <div class="qty"><button data-q="${i}" data-d="-1" aria-label="Less">−</button><span>${b.q}</span><button data-q="${i}" data-d="1" aria-label="More">+</button></div></div>`).join(''):'<p class="empty">Your bag is empty. Add a device or some clothing to reserve it.</p>';
   $('bagTotal').textContent='A$'+bag.reduce((a,b)=>a+toAud(b.price)*b.q,0).toFixed(2).replace(/\.00$/,'');
   $('bagSend').disabled=!bag.length;$('bagSend').style.opacity=bag.length?1:.5;}
@@ -454,7 +454,7 @@ function streetSVG(o,seed){let r=seed*9301+49297;const rnd=()=>(r=(r*9301+49297)
   return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${g.join('')}</svg>`}
 (function(){const grid=document.getElementById('locGrid');if(!grid)return;
   grid.innerHTML=LOCS.map((l,i)=>`<article class="loc reveal ${l.top?'top':''}"><div class="pic">${streetSVG(l.sc,i+3)}
-    <img src="img/loc-${l.id}.jpg" alt="${l.name}" loading="lazy" onload="this.parentNode.querySelector('.lbl').textContent='Photo'" onerror="this.remove()">
+    <img src="img/loc-${l.id}.jpg" alt="${l.name}" loading="lazy" onload="this.parentNode.querySelector('.lbl').textContent='Stock photo · Bangkok'" onerror="this.remove()">
     <span class="lbl">Illustration</span>${l.top?'<span class="pick">Top pick</span>':''}</div>
     <div class="body"><small>${l.sub}</small><h3 style="font-size:${l.top?'1.7rem':'1.25rem'}">${l.name}</h3><p>${l.d}</p>
     <dl>${l.f.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl></div></article>`).join('');
@@ -506,7 +506,7 @@ const APPS=[['today','Today','Your day, your wellness score and what is next.'],
 
 /* ---------- Mini Pod scroll story ---------- */
 (function(){const steps=document.querySelectorAll('.st');if(!steps.length)return;const pod=document.getElementById('stPod'),ring=document.getElementById('stRing'),chip=document.getElementById('stChip');
-  function set(a){steps.forEach(s=>s.classList.toggle('on',s===a));const c=a.dataset.c;ring.style.setProperty('--c',c);chip.style.setProperty('--c',c);chip.lastElementChild.textContent=a.dataset.chip;pod.style.transform=`rotate(${a.dataset.r}deg) scale(${a.dataset.s})`}
+  function set(a){steps.forEach(s=>s.classList.toggle('on',s===a));document.querySelectorAll('.st-photo').forEach(p=>p.classList.toggle('on',p.dataset.k===a.dataset.photo));const c=a.dataset.c;ring.style.setProperty('--c',c);chip.style.setProperty('--c',c);chip.lastElementChild.textContent=a.dataset.chip;pod.style.transform=`rotate(${a.dataset.r}deg) scale(${a.dataset.s})`}
   if(!('IntersectionObserver' in window))return;
   const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)set(e.target)}),{rootMargin:'-45% 0px -45% 0px'});steps.forEach(s=>io2.observe(s));})();
 
@@ -538,3 +538,15 @@ const APPS=[['today','Today','Your day, your wellness score and what is next.'],
   const d=document.createElement('div');d.className='intro';d.setAttribute('aria-hidden','true');
   d.innerHTML=`<div><svg viewBox="0 0 32 32" fill="none" stroke-width="2.2" stroke-linecap="round"><circle cx="16" cy="16" r="3.2" fill="#5fe0bf"/><path d="M9.5 9.5a9.2 9.2 0 0 0 0 13" stroke="#5fe0bf"/><path d="M22.5 9.5a9.2 9.2 0 0 1 0 13" stroke="#5fe0bf"/><path d="M5 5a15.5 15.5 0 0 0 0 22" stroke="#eef4f1" opacity=".55"/><path d="M27 5a15.5 15.5 0 0 1 0 22" stroke="#eef4f1" opacity=".55"/></svg><span>${BRAND}<em>Studio</em></span></div>`;
   document.body.appendChild(d);setTimeout(()=>d.classList.add('go'),1000);setTimeout(()=>d.remove(),2000)})();
+
+/* ---------- Cafe day / night ---------- */
+(function(){const sw=document.querySelector('.dn');if(!sw)return;const root=document.documentElement;
+  const swaps=[...document.querySelectorAll('[data-night]')].map(el=>{const isImg=el.tagName==='IMG';return {el,isImg,day:isImg?el.getAttribute('src'):el.innerHTML,night:el.dataset.night}});
+  function apply(m,user){const n=m==='night';root.classList.toggle('is-night',n);sw.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.dn===m));
+    swaps.forEach(o=>{const v=n?o.night:o.day;if(o.isImg){if(o.el.getAttribute('src')!==v)o.el.setAttribute('src',v)}else o.el.innerHTML=v});
+    const tab=document.querySelector(`#menuTabs [data-t="${n?'eve':'day'}"]`);if(tab&&tab.getAttribute('aria-selected')!=='true')tab.click();
+    if(user){try{sessionStorage.setItem('dn',m)}catch(e){}}}
+  sw.onclick=e=>{const b=e.target.closest('[data-dn]');if(b)apply(b.dataset.dn,true)};
+  let m=null;try{m=sessionStorage.getItem('dn')}catch(e){}
+  if(!m){const h=+new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Bangkok',hour:'numeric',hourCycle:'h23'}).format(new Date());m=(h>=17||h<8)?'night':'day'}
+  apply(m,false);})();

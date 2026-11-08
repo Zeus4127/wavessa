@@ -650,3 +650,50 @@ details[open]::details-content{height:auto}
 .intro svg path{stroke-dasharray:40;stroke-dashoffset:40;animation:introdraw .9s .1s cubic-bezier(.2,.7,.2,1) forwards}
 .intro em{font-family:"Instrument Serif",Georgia,serif;font-weight:400;color:var(--mint);margin-left:.3rem}
 @keyframes introdraw{to{stroke-dashoffset:0}}
+
+/* ---------- Real photo swaps ---------- */
+.prod .ph.photo img{mix-blend-mode:normal;object-fit:cover}
+.pod-hero img{filter:drop-shadow(0 50px 60px rgba(0,0,0,.55))}
+.story-stage .st-photo{position:absolute;inset:6% 2%;width:96%;height:88%;max-width:none;object-fit:cover;border-radius:28px;opacity:0;transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform 1.2s cubic-bezier(.2,.7,.2,1);transform:scale(.97);z-index:3;box-shadow:0 40px 80px -30px rgba(0,0,0,.8);border:1px solid rgba(255,255,255,.1)}
+.story-stage .st-photo.on{opacity:1;transform:none}
+.story-chip{z-index:4}
+.day .dv{background:rgba(10,14,14,.35)}
+
+/* ---------- Cafe night mode ---------- */
+.dn{display:inline-flex;gap:.3rem;padding:.3rem;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);margin:0 0 1.4rem;backdrop-filter:blur(8px)}
+.dn button{display:inline-flex;align-items:center;gap:.45rem;font:600 .9rem/1 var(--f-d);padding:.7rem 1.05rem;border-radius:999px;border:0;background:transparent;color:#dfe9e5;cursor:pointer;transition:background .4s,color .4s}
+.dn button svg{width:16px;height:16px}.dn button small{font:500 .7rem/1 var(--f-m);opacity:.7}
+.dn button[aria-pressed="true"]{background:#f4efe6;color:#1a1408}
+.is-night .dn button[aria-pressed="true"]{background:var(--amber);color:#2a1a06}
+.hero-night{position:absolute;inset:0;z-index:-3;background:url(img/photo/night-bokeh.webp) center/cover;opacity:0;transition:opacity 1.2s;transform:scale(1.08);animation:kb 30s ease-in-out infinite alternate}
+@keyframes kb{to{transform:scale(1.18) translate(-2%,-1%)}}
+.is-night .hero-night{opacity:1}
+.is-night .hero h1 .warm{opacity:.35}
+.hero h1 .warm,.hero h1 .grad{transition:opacity .8s}
+html:not(.is-night) .photo-hero h1 .grad{opacity:.55}
+.pstack img{transition:opacity .5s}
+html.is-night{--bg:#0d0b09;--bg2:#13100d;--card:#1a1612;--ink:#f3ece2;--muted:#a89f93;--line:#2c2620;--tile:#1f1a15;--accent:#e8b878;--accent-2:#d9a35e;--on-accent:#2a1a06;--glow:rgba(232,184,120,.14);--mint:#e8b878;color-scheme:dark}
+html.is-night .night{--night:#0a0806;--accent:#e8b878;background:#0a0806}
+html.is-night body{background:var(--bg);color:var(--ink)}
+html.is-night .prod .ph img,html.is-night .menu-photos img{mix-blend-mode:normal}
+body,section{transition:background-color .8s,color .8s}
+.evening{position:relative;overflow:hidden}
+.evening::before{content:"";position:absolute;inset:-20% -10% auto;height:70%;background:radial-gradient(50% 60% at 70% 30%,rgba(232,184,120,.16),transparent 70%);pointer-events:none}
+.evening .eyebrow{color:var(--amber)}
+.eve-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:260px 220px;gap:1rem}
+.eg{margin:0;position:relative;border-radius:var(--r);overflow:hidden;background:#000}
+.eg img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.eg:hover img{transform:scale(1.05)}
+.eg.big{grid-row:span 2}.eg.wide{grid-column:span 2}
+.eg figcaption{position:absolute;left:0;right:0;bottom:0;padding:2.4rem 1rem .9rem;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#fff;font:500 .9rem/1.3 var(--f-d)}
+.eve-row{display:grid;grid-template-columns:1.4fr 1fr;gap:1rem;margin-top:1rem}
+.eve-week,.eve-facts{background:rgba(255,255,255,.04);border:1px solid rgba(232,184,120,.18);border-radius:var(--r);padding:1.4rem}
+.eve-week ul{list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:.2rem}
+.eve-week li{display:grid;grid-template-columns:56px 1fr;gap:.8rem;padding:.8rem 0;border-top:1px solid rgba(255,255,255,.07)}
+.eve-week li b{font:600 .8rem/1.6 var(--f-m);letter-spacing:.1em;color:var(--amber)}
+.eve-week li strong{display:block;font:600 1.05rem/1.3 var(--f-d)}
+.eve-week li span{color:var(--night-muted);font-size:.92rem}
+.eve-facts{display:grid;gap:1rem;align-content:start}
+.eve-facts div{display:grid;gap:.15rem}.eve-facts b{font:600 1.3rem/1.1 var(--f-d)}.eve-facts span{color:var(--night-muted);font-size:.9rem}
+.eve-facts .btn{justify-self:start;background:var(--amber);color:#2a1a06}
+@media (max-width:900px){.eve-grid{grid-template-columns:1fr 1fr;grid-template-rows:220px 180px 180px}.eg.big{grid-column:span 2;grid-row:auto}.eg.wide{grid-column:span 2}.eve-row{grid-template-columns:1fr}}

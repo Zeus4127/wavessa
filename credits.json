@@ -207,5 +207,134 @@
    "page": "https://www.pexels.com/video/close-up-video-of-person-making-latte-art-7487668/",
    "license": "Pexels License https://www.pexels.com/license/"
   }
- ]
+ ],
+ "pexels_photos": [
+  {
+   "file": "img/real/desk-pod.webp",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/photo/6373184/",
+   "note": "Desk and phone photo, with our 3D Mini Pod and app screen added",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "img/real/water-pod.webp",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/photo/7480372/",
+   "note": "Water splash photo, with our 3D Mini Pod added",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "img/real/wear-tee.webp",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/photo/8532638/",
+   "note": "Black tee, our mark added",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "img/real/wear-hoodie.webp",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/photo/9594679/",
+   "note": "Hoodies on a rack",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "img/real/wear-pants.webp",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/photo/31961165/",
+   "note": "Sweatpants, cropped",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "img/real/wear-cap.webp",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/photo/18978986/",
+   "note": "Cap, original print removed and our mark added",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "img/real/wear-tote.webp",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/photo/1214212/",
+   "note": "Black tote, our mark added",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "img/real/wear-socks.webp",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/photo/9594142/",
+   "note": "Socks",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "img/loc-thonglor.jpg",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/photo/2972860/",
+   "note": "Rooftop lounge, Bangkok",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "img/loc-ari.jpg",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/photo/20074713/",
+   "note": "Cafe terrace at night",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "img/loc-sathorn.jpg",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/photo/30516945/",
+   "note": "Bangkok at night",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "img/photo/night-booth.webp",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/photo/20418284/",
+   "note": "",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "img/photo/night-lamp.webp",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/photo/20418285/",
+   "note": "",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "img/photo/night-lounge.webp",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/photo/11279651/",
+   "note": "",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "img/photo/night-window.webp",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/photo/36331295/",
+   "note": "",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "img/photo/night-terrace.webp",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/photo/20074713/",
+   "note": "",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "img/photo/night-bokeh.webp",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/photo/4551154/",
+   "note": "",
+   "license": "Pexels License https://www.pexels.com/license/"
+  },
+  {
+   "file": "img/photo/bkk-skyline-night.webp",
+   "source": "Pexels",
+   "page": "https://www.pexels.com/photo/31017760/",
+   "note": "",
+   "license": "Pexels License https://www.pexels.com/license/"
+  }
+ ],
+ "renders": "img/real/pod-*.webp are our own 3D renders of the Mini Pod concept, made from the site's three.js model."
 }

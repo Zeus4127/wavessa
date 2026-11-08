@@ -27,7 +27,7 @@
 <header class="top" id="top">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Home"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="16" cy="16" r="3.2" fill="#5fe0bf" stroke="none"/><path d="M9.5 9.5a9.2 9.2 0 0 0 0 13" stroke="#5fe0bf"/><path d="M22.5 9.5a9.2 9.2 0 0 1 0 13" stroke="#5fe0bf"/><path d="M5 5a15.5 15.5 0 0 0 0 22" opacity=".55"/><path d="M27 5a15.5 15.5 0 0 1 0 22" opacity=".55"/></svg><span data-brand>Wavessa</span><small>Studio · BKK</small></a>
-    <nav class="links" aria-label="Main"><a href="#cafe">Studio</a><a href="#sessions">Seat sessions</a><a href="#menu">Menu</a><a href="#locations">Locations</a><a href="#circle">Circle</a><a href="#book">Book a seat</a><a href="#visit">Visit</a></nav>
+    <nav class="links" aria-label="Main"><a href="#cafe">Studio</a><a href="#sessions">Seat sessions</a><a href="#menu">Menu</a><a href="#evening">Nights</a><a href="#locations">Locations</a><a href="#circle">Circle</a><a href="#book">Book a seat</a><a href="#visit">Visit</a></nav>
     <a class="switch" href="devices.html">Devices <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <button class="icon-btn" id="themeBtn" aria-label="Switch light or dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
     <button class="icon-btn" id="bagBtn" aria-label="Open bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="count" id="bagCount">0</span></button>
@@ -36,26 +36,27 @@
 </header>
 <div class="drawer" id="drawer" role="dialog" aria-label="Menu">
   <button class="icon-btn close" id="closeMenu" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  <a href="#cafe">Studio</a><a href="#sessions">Seat sessions</a><a href="#menu">Menu</a><a href="#locations">Locations</a><a href="#circle">Circle</a><a href="#book">Book a seat</a><a href="#visit">Visit</a><a href="index.html">Home</a>
+  <a href="#cafe">Studio</a><a href="#sessions">Seat sessions</a><a href="#menu">Menu</a><a href="#evening">Nights</a><a href="#locations">Locations</a><a href="#circle">Circle</a><a href="#book">Book a seat</a><a href="#visit">Visit</a><a href="index.html">Home</a>
 </div>
 
 <section class="hero night photo-hero" id="hero">
-  <video class="hero-v" autoplay muted loop playsinline preload="metadata" poster="video/latte-pour.jpg" aria-hidden="true"><source src="video/latte-pour.mp4" type="video/mp4"></video><div class="vshade"></div>
+  <video class="hero-v" autoplay muted loop playsinline preload="metadata" poster="video/latte-pour.jpg" aria-hidden="true"><source src="video/latte-pour.mp4" type="video/mp4"></video><div class="hero-night" aria-hidden="true"></div><div class="vshade"></div>
   <div class="wrap">
     <div class="hero-grid">
       <div>
         <div class="pill reveal"><b>SOON</b> Bangkok pop-up preview, then our first Studio</div>
         <h1 class="reveal"><span class="warm">Coffee by day.</span><br><span class="grad">Calm by night.</span></h1>
-        <p class="lead reveal">A Bangkok cafe and evening lounge where every seat has a frequency pad built into the cushion. Order a flat white, pick a mood, and sit a little longer. Take the device and the clothes home on your way out.</p>
+        <p class="lead reveal" data-night="After five the lights go low, the music slows down and the lounge takes over. Pick a mood on your seat, order something warm or a mood drink, and stay until midnight.">A Bangkok cafe and evening lounge where every seat has a frequency pad built into the cushion. Order a flat white, pick a mood, and sit a little longer. Take the device and the clothes home on your way out.</p>
+        <div class="dn reveal" role="group" aria-label="Day or night"><button data-dn="day" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>Day <small>08–17</small></button><button data-dn="night" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>Night <small>17–24</small></button></div>
         <div class="ctas reveal">
           <a class="btn mint" href="#visit">Get the opening invite</a>
           <a class="btn ghost" href="devices.html">Shop devices <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
       <div class="pstack reveal" aria-label="Photos of the cafe look we are going for">
-        <figure class="p1"><img src="img/photo/cafe-industrial.webp" alt="Warm cafe interior with wooden tables and pendant lights" width="1600" height="1067"></figure>
-        <figure class="p2"><img src="img/photo/coffee-latte2.webp" alt="Latte with leaf art on a wooden table" loading="lazy"></figure>
-        <div class="pchip"><i></i><span><b>Seat session</b>Calm · 15 min free with any order</span></div>
+        <figure class="p1"><img data-night="img/photo/night-lounge.webp" src="img/photo/cafe-industrial.webp" alt="Warm cafe interior with wooden tables and pendant lights" width="1600" height="1067"></figure>
+        <figure class="p2"><img data-night="img/photo/night-booth.webp" src="img/photo/coffee-latte2.webp" alt="Latte with leaf art on a wooden table" loading="lazy"></figure>
+        <div class="pchip"><i></i><span data-night="<b>Evening lounge</b>Unwind on the pads until 24:00"><b>Seat session</b>Calm · 15 min free with any order</span></div>
       </div>
     </div>
     <div class="hours-strip reveal">
@@ -125,12 +126,42 @@
   </div>
 </section>
 
+<section class="night evening" id="evening">
+  <div class="wrap">
+    <div class="head reveal"><p class="eyebrow">After five</p><h2>The lounge<br>comes <em class="sf">alive.</em></h2><p>From 17:00 the lights go low, the playlist slows down and every seat runs evening moods. Come for a slow drink, stay for a session, leave at midnight.</p></div>
+    <div class="eve-grid">
+      <figure class="eg big reveal"><img src="img/photo/night-window.webp" alt="Dim lounge corner with a pendant lamp and a city view at dusk" loading="lazy"><figcaption>Window seats at dusk</figcaption></figure>
+      <figure class="eg reveal"><img src="img/photo/night-lounge.webp" alt="Dark lounge with warm pendant lights and armchairs" loading="lazy"><figcaption>Low light, soft chairs</figcaption></figure>
+      <figure class="eg reveal"><img src="img/photo/night-terrace.webp" alt="Friends sitting at a small terrace table at night" loading="lazy"><figcaption>The terrace after work</figcaption></figure>
+      <figure class="eg wide reveal"><img src="img/photo/bkk-skyline-night.webp" alt="Bangkok skyline at night" loading="lazy"><figcaption>Bangkok, after dark</figcaption></figure>
+    </div>
+    <div class="eve-row">
+      <div class="eve-week reveal">
+        <p class="eyebrow">Planned evenings</p>
+        <ul>
+          <li><b>Tue</b><span><strong>Vinyl and Calm</strong>Records on the deck, Calm on every seat. 19:00–22:00</span></li>
+          <li><b>Thu</b><span><strong>Sound bath on the pads</strong>A guided 45-minute session for the whole room. 20:00</span></li>
+          <li><b>Fri</b><span><strong>Late lounge</strong>Acoustic set, Unwind mood, open until midnight. 19:00–24:00</span></li>
+          <li><b>Sun</b><span><strong>Deep Rest hour</strong>Lights at their lowest, phones away. 21:00</span></li>
+        </ul>
+      </div>
+      <div class="eve-facts reveal">
+        <div><b>17:00–24:00</b><span>every night</span></div>
+        <div><b>Mood drinks</b><span>warm, iced and sparkling, all on the evening menu</span></div>
+        <div><b>Booths</b><span>quiet seats for Deep Rest, bookable</span></div>
+        <a class="btn mint" href="#book">Book an evening seat</a>
+      </div>
+    </div>
+    <p class="loc-note">Stock photos that show the feel we want, not our own Studio yet. Evening events are planned and may change.</p>
+  </div>
+</section>
+
 <section id="locations" style="background:var(--bg2)">
   <div class="wrap">
     <div class="head reveal"><p class="eyebrow">Where we're opening</p><h2>Our favourite<br>streets <em class="sf">so far.</em></h2><p>We are shortlisting spaces now. These are the three areas we would most like to open in, and why.</p></div>
     <figure class="loc-film reveal"><video class="lv" autoplay muted loop playsinline preload="metadata" poster="video/bkk-bts-street.jpg" aria-hidden="true"><source src="video/bkk-bts-street.mp4" type="video/mp4"></video><figcaption><b>Bangkok, under the BTS</b><span>Stock video of a Bangkok street, not our exact site</span></figcaption></figure>
     <div class="locs" id="locGrid"></div>
-    <p class="loc-note">The street pictures are illustrations until we sign a lease. Photos of the real space will replace them.</p>
+    <p class="loc-note">Photos are stock pictures of Bangkok, not the exact streets. Photos of the real space will replace them once we sign a lease.</p>
   </div>
 </section>
 
@@ -260,7 +291,7 @@
     </div>
     <div class="legal">
       <p><span data-brand>Wavessa</span> seat sessions and devices are general wellness products for relaxation. They are not medical devices and are not intended to diagnose, treat, cure or prevent any disease. Do not use with a pacemaker or other implanted electronic device, or during pregnancy, without your doctor's advice. Sessions are for adults only.</p>
-      <p>* Devices are in development. Prices are target retail prices in Australian dollars (AUD) including GST, converted from our planned Thai prices for now, and may change. Specifications, finishes and dates may change before launch. Product images are design renders and clothing images are illustrations.</p>
+      <p>* Devices are in development. Prices are target retail prices in Australian dollars (AUD) including GST, converted from our planned Thai prices for now, and may change. Specifications, finishes and dates may change before launch. Product images are concept renders, some placed into stock photos. Clothing photos are stock samples with our mark added.</p>
       <p>Cafe, coffee and lifestyle photos and videos are free stock from <a href="https://unsplash.com">Unsplash</a> and <a href="https://www.pexels.com">Pexels</a> (see credits.json). They show the look we are going for, not our own Studio yet.</p>
       <p>© <span id="yr">2026</span> <span data-brand>Wavessa</span>. Working name, subject to trademark checks.</p>
     </div>
