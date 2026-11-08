@@ -8,7 +8,10 @@ document.title = BRAND + " " + (document.body.dataset.title||"Studio Bangkok");
 $('yr').textContent = new Date().getFullYear();
 document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{a.href='mailto:'+EMAIL;if(a.textContent.includes('@'))a.textContent=EMAIL});
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const thb = n => 'THB ' + n.toLocaleString('en-US');
+/* Prices are stored in THB and shown in AUD for now (about 21 THB = A$1, rounded to retail prices). */
+const AUD_FIXED={7900:379,3990:199,12900:599};
+const toAud=n=>{if(AUD_FIXED[n])return AUD_FIXED[n];const v=n/21;return v>=100?Math.round(v/10)*10-1:v>=30?Math.round(v/5)*5-1:v>=20?Math.round(v):Math.round(v*2)/2};
+const thb = n => {if(!n)return 'A$0';const v=toAud(n);return 'A$'+(v%1?v.toFixed(2):v.toLocaleString('en-US'))};
 const store = {get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 
 /* ---------- Theme ---------- */
@@ -67,7 +70,7 @@ const SESSIONS=[
  {k:'Unwind',c:'#d79bff',d:'Rolling waves. For after work.',drink:'Coconut Chamomile',hz:.7},
  {k:'Deep Rest',c:'#8a93ff',d:'Very slow. For the last hour of the night.',drink:'Warm Pandan Oat',hz:.3}
 ];
-const LENS=[{m:15},{m:30},{m:45}]; /* 15 min Calm is free with an order. Other 15 and 30 min sessions THB 99, 45 min THB 149 */
+const LENS=[{m:15},{m:30},{m:45}]; /* 15 min Calm is free with an order. Other 15 and 30 min sessions THB 99 (A$4.50), 45 min THB 149 (A$7) */
 const MENU={
  day:[
   ['Coffee','Thai beans',[['Espresso or long black','Single-origin from Chiang Rai',140],['Flat white','Whole or oat milk',150],['Iced Thai tea oat latte','Less sweet than usual',170],['Coconut cold brew','Steeped 18 hours, fresh coconut water',180],['Ceremonial matcha','Hot or iced',180]]],
@@ -79,7 +82,7 @@ const MENU={
   ['Evening plates','Until 23:00',[['Crispy chicken bites','Sweet chilli and lime',220],['Truffle fries','',190],['Spicy edamame','',140],['Grilled pork skewers','Tamarind glaze',240]]],
   ['Late tea and coffee','Until midnight',[['Decaf flat white','',160],['Chamomile and honey','',140],['Thai iced tea','',150],['Hot chocolate','70% Chanthaburi cacao',170]]]
  ]};
-const MENU_FOOT={day:'Prices in Thai baht including VAT. Ask staff about allergens. Every order includes a free 15-minute Calm session.',
+const MENU_FOOT={day:'Prices in Australian dollars, including GST. Ask staff about allergens. Every order includes a free 15-minute Calm session.',
   eve:'After 17:00 the lights go down and the Studio becomes a quiet lounge. The full evening menu is shown in store. After dark, sessions are gentle wind-down programs only.'};
 
 /* ---------- Sessions UI ---------- */
@@ -111,13 +114,13 @@ setInterval(()=>{sT=(sT+1)%300;const p=sT/300;$('sArc').style.strokeDashoffset=3
 /* ---------- Menu UI ---------- */
 const menuTabs=$('menuTabs');
 function drawMenu(t){menuTabs.querySelectorAll('button').forEach(b=>b.setAttribute('aria-selected',b.dataset.t===t));
-  $('menuGrid').innerHTML=MENU[t].map(([h,sub,items])=>`<div class="menu-col"><h3>${h}<small>${sub}</small></h3><ul>${items.map(([n,d,p])=>`<li><b>${n}</b><em>${p}</em>${d?`<span>${d}</span>`:''}</li>`).join('')}</ul></div>`).join('');
+  $('menuGrid').innerHTML=MENU[t].map(([h,sub,items])=>`<div class="menu-col"><h3>${h}<small>${sub}</small></h3><ul>${items.map(([n,d,p])=>`<li><b>${n}</b><em>${typeof p==="number"?thb(p).replace("A$",""):p}</em>${d?`<span>${d}</span>`:''}</li>`).join('')}</ul></div>`).join('');
   $('menuFoot').textContent=MENU_FOOT[t];}
 menuTabs.onclick=e=>{const b=e.target.closest('button');if(b)drawMenu(b.dataset.t)};
 drawMenu(new Date().getHours()>=17?'eve':'day');
 
 /* ============================================================
-   DATA: devices (THB, incl. 7% VAT, target prices)
+   DATA: devices (stored in THB, shown in AUD, target prices)
    ============================================================ */
 const DEV=[
  {id:'pebble',r:'pod',tag:'Flagship',name:'Mini Pod',dims:'60 × 42 × 12 mm · 50 g',desc:'A smooth river-stone shape with a round touchscreen and one side button. Runs every program the seats do.',screen:'1.3″ round touch',batt:'800 mAh, about 4 h',water:'IP68 target',price:7900,live:1},
@@ -154,7 +157,7 @@ tiersEl.innerHTML=TIERS.map((t,i)=>`<button class="tier" data-i="${i}" aria-pres
 swEl.innerHTML=FIN.map((f,i)=>`<button class="sw" style="background:${f.s}" aria-label="${f.n}" aria-pressed="${i===0}" data-i="${i}"></button>`).join('');
 function updCfg(){const t=TIERS[cfg.tier];tiersEl.querySelectorAll('.tier').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.i===cfg.tier));
   swEl.querySelectorAll('.sw').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.i===cfg.fin));
-  $('cfgPrice').innerHTML=thb(t.p)+`<small>incl. 7% VAT · target price${t.only?' · collect in Studio':''}</small>`;
+  $('cfgPrice').innerHTML=thb(t.p)+`<small>incl. GST · target price${t.only?' · collect in Studio':''}</small>`;
   $('finName').textContent=FIN[cfg.fin].n;
   $('cfgBadge').textContent=FIN[cfg.fin].n+' · live 3D';}
 tiersEl.onclick=e=>{const b=e.target.closest('.tier');if(b){cfg.tier=+b.dataset.i;updCfg()}};
@@ -190,14 +193,14 @@ function openPd(id){const p=DEV.find(x=>x.id===id);
   <div class="feat"><h4>Works with the Studio</h4><ul><li>Runs the same five moods as the seats</li><li>Owners get free seat sessions</li><li>Try it at the counter before you reserve</li></ul></div>
   <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.4rem"><b style="font:600 1.9rem/1 var(--f-d)">${thb(p.price)}</b>
   <button class="btn" id="pdAdd">${p.live?'Reserve':'Register interest'}</button></div>
-  <small class="muted">Design render. Target price including 7% VAT. Specifications may change.</small></div>`;
+  <small class="muted">Design render. Target price in AUD including GST. Specifications may change.</small></div>`;
   $('pdAdd').onclick=()=>{addToBag({key:p.id,name:p.name,opt:ONE[p.r],price:p.price,img:p.id});pd.close()};
   pd.showModal();}
 $('pdClose').onclick=()=>pd.close();
 pd.addEventListener('click',e=>{if(e.target===pd)pd.close()});
 
 /* ============================================================
-   DATA: clothing (THB, incl. VAT)
+   DATA: clothing (stored in THB, shown in AUD)
    ============================================================ */
 const COL={Ink:'#1b2422',Bone:'#e9e2d3',Sage:'#9fb3a1',Teal:'#0f5d55',Clay:'#c08a68',Mint:'#5fe0bf'};
 const WEAR=[
@@ -268,7 +271,7 @@ $('fres').onclick=e=>{const o=e.target.closest('[data-fopen]'),a=e.target.closes
 drawFinder();
 
 /* ---------- Bundle + compare ---------- */
-$('bundleWas').textContent=thb(7900+1690+2900*3)+' separately';
+$('bundleWas').textContent='A$'+(toAud(7900)+toAud(1690)+toAud(2900)*3).toLocaleString('en-US')+' separately';
 $('bundleAdd').onclick=()=>addToBag({key:'bundle',name:'Studio Starter bundle',opt:'Mini Pod, Pod Strap, 3 months Circle',price:13900,img:'pebble'});
 const CMP=[['Screen','Light ring','1.3″ round touchscreen','1.3″ round touchscreen','1.3″ round touchscreen'],
  ['Sensors','Motion','Heart rate, skin temperature, motion','Heart rate, skin temperature, motion','Heart rate, skin temperature, motion'],
@@ -295,7 +298,7 @@ function saveBag(){store.set('studio-bag',bag);const n=bag.reduce((a,b)=>a+b.q,0
 function drawBag(){const el=$('bagItems');
   el.innerHTML=bag.length?bag.map((b,i)=>`<div class="it"><div class="th">${b.wear?wearSVG(b.wear,b.col):b.bean?`<div style="width:100%;height:100%;background:${b.bean}"></div>`:`<img src="${img(b.img)}" alt="">`}</div><div><b>${b.name}</b><small>${b.opt} · ${thb(b.price)}</small></div>
     <div class="qty"><button data-q="${i}" data-d="-1" aria-label="Less">−</button><span>${b.q}</span><button data-q="${i}" data-d="1" aria-label="More">+</button></div></div>`).join(''):'<p class="empty">Your bag is empty. Add a device or some clothing to reserve it.</p>';
-  $('bagTotal').textContent=thb(bag.reduce((a,b)=>a+b.price*b.q,0));
+  $('bagTotal').textContent='A$'+bag.reduce((a,b)=>a+toAud(b.price)*b.q,0).toFixed(2).replace(/\.00$/,'');
   $('bagSend').disabled=!bag.length;$('bagSend').style.opacity=bag.length?1:.5;}
 $('bagItems').onclick=e=>{const b=e.target.closest('[data-q]');if(!b)return;const i=+b.dataset.q;bag[i].q+=+b.dataset.d;if(bag[i].q<1)bag.splice(i,1);saveBag()};
 const openBag=()=>{bagEl.classList.add('open');bagEl.setAttribute('aria-hidden','false')},closeBag=()=>{bagEl.classList.remove('open');bagEl.setAttribute('aria-hidden','true')};
@@ -303,8 +306,8 @@ $('bagBtn').onclick=openBag;$('footBag').onclick=e=>{e.preventDefault();openBag(
 $('bagClose').onclick=closeBag;$('bagShade').onclick=closeBag;
 addEventListener('keydown',e=>{if(e.key==='Escape')closeBag()});
 $('bagSend').onclick=()=>{if(!bag.length)return;
-  const lines=bag.map(b=>`- ${b.q} x ${b.name} (${b.opt}) ${thb(b.price*b.q)}`).join('\n');
-  const body=`Hi ${BRAND} Studio,\n\nI'd like to reserve:\n${lines}\n\nTotal: ${thb(bag.reduce((a,b)=>a+b.price*b.q,0))}\n\nMy name:\nPhone or LINE ID:\n`;
+  const lines=bag.map(b=>`- ${b.q} x ${b.name} (${b.opt}) A$${(toAud(b.price)*b.q).toFixed(2).replace(/\.00$/,'')}`).join('\n');
+  const body=`Hi ${BRAND} Studio,\n\nI'd like to reserve:\n${lines}\n\nTotal: ${'A$'+bag.reduce((a,b)=>a+toAud(b.price)*b.q,0).toFixed(2).replace(/\.00$/,'')}\n\nMy name:\nPhone or LINE ID:\n`;
   location.href=`mailto:${EMAIL}?subject=${encodeURIComponent(BRAND+' reservation')}&body=${encodeURIComponent(body)}`;};
 saveBag();
 
@@ -424,9 +427,9 @@ else{$('cfgStage').classList.add('no3d')}
    the illustration automatically.
    ============================================================ */
 const LOCS=[
- {id:'thonglor',top:1,name:'Thonglor and Ekkamai side sois',sub:'Sukhumvit 55 to 63 · near BTS Thong Lo and Ekkamai',d:"A quiet soi off the main road, on the ground floor or in a hidden upstairs room. This is Bangkok's home of premium cafes, clinics and members' bars, so it suits the evening lounge and the Circle best.",f:[['Rent','THB 70–110k a month'],['Size','about 60–65 m², 20 seats'],['Crowd','Young Thai professionals, Japanese and Western expats, the wellness crowd'],['Busy','All week, strongest in the evenings and at weekends']],sc:{sky:['#1b2346','#e8a46a'],bts:1,trees:2,hue:28}},
- {id:'ari',name:'Ari side sois',sub:'Phahonyothin Soi 7 · near BTS Ari',d:"Bangkok's hidden-cafe neighbourhood, with lower rent and a strong daytime crowd. A good fit for the first pop-up.",f:[['Rent','THB 40–70k a month'],['Crowd','Creatives, young professionals, media people'],['Busy','Weekdays and weekend brunch']],sc:{sky:['#9fd3d0','#f3e3c2'],bts:0,trees:5,hue:150}},
- {id:'sathorn',name:'Sathorn and Suan Plu',sub:'Near BTS Chong Nonsi and Saint Louis',d:'Old houses and small courtyards next to the business district, with a strong after-work crowd on weekdays.',f:[['Rent','THB 55–90k a month'],['Crowd','Executives, embassy staff, expat families'],['Busy','Weekdays, quieter at weekends']],sc:{sky:['#2a3550','#c9787a'],bts:1,trees:3,hue:200,house:1}}
+ {id:'thonglor',top:1,name:'Thonglor and Ekkamai side sois',sub:'Sukhumvit 55 to 63 · near BTS Thong Lo and Ekkamai',d:"A quiet soi off the main road, on the ground floor or in a hidden upstairs room. This is Bangkok's home of premium cafes, clinics and members' bars, so it suits the evening lounge and the Circle best.",f:[['Rent','about A$3,329–A$5,239 a month'],['Size','about 60–65 m², 20 seats'],['Crowd','Young Thai professionals, Japanese and Western expats, the wellness crowd'],['Busy','All week, strongest in the evenings and at weekends']],sc:{sky:['#1b2346','#e8a46a'],bts:1,trees:2,hue:28}},
+ {id:'ari',name:'Ari side sois',sub:'Phahonyothin Soi 7 · near BTS Ari',d:"Bangkok's hidden-cafe neighbourhood, with lower rent and a strong daytime crowd. A good fit for the first pop-up.",f:[['Rent','about A$1,899–A$3,329 a month'],['Crowd','Creatives, young professionals, media people'],['Busy','Weekdays and weekend brunch']],sc:{sky:['#9fd3d0','#f3e3c2'],bts:0,trees:5,hue:150}},
+ {id:'sathorn',name:'Sathorn and Suan Plu',sub:'Near BTS Chong Nonsi and Saint Louis',d:'Old houses and small courtyards next to the business district, with a strong after-work crowd on weekdays.',f:[['Rent','about A$2,619–A$4,289 a month'],['Crowd','Executives, embassy staff, expat families'],['Busy','Weekdays, quieter at weekends']],sc:{sky:['#2a3550','#c9787a'],bts:1,trees:3,hue:200,house:1}}
 ];
 function streetSVG(o,seed){let r=seed*9301+49297;const rnd=()=>(r=(r*9301+49297)%233280)/233280;
   const W=640,H=400,g=[];
