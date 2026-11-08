@@ -16,7 +16,7 @@
 <header class="top" id="top">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Home"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="16" cy="16" r="3.2" fill="#5fe0bf" stroke="none"/><path d="M9.5 9.5a9.2 9.2 0 0 0 0 13" stroke="#5fe0bf"/><path d="M22.5 9.5a9.2 9.2 0 0 1 0 13" stroke="#5fe0bf"/><path d="M5 5a15.5 15.5 0 0 0 0 22" opacity=".55"/><path d="M27 5a15.5 15.5 0 0 1 0 22" opacity=".55"/></svg><span data-brand>Wavessa</span><small>Studio · BKK</small></a>
-    <nav class="links" aria-label="Main"><a href="#cafe">Studio</a><a href="#sessions">Seat sessions</a><a href="#menu">Menu</a><a href="#locations">Locations</a><a href="#circle">Circle</a><a href="#visit">Visit</a></nav>
+    <nav class="links" aria-label="Main"><a href="#cafe">Studio</a><a href="#sessions">Seat sessions</a><a href="#menu">Menu</a><a href="#locations">Locations</a><a href="#circle">Circle</a><a href="#book">Book a seat</a><a href="#visit">Visit</a></nav>
     <a class="switch" href="devices.html">Devices <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <button class="icon-btn" id="themeBtn" aria-label="Switch light or dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
     <button class="icon-btn" id="bagBtn" aria-label="Open bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="count" id="bagCount">0</span></button>
@@ -25,7 +25,7 @@
 </header>
 <div class="drawer" id="drawer" role="dialog" aria-label="Menu">
   <button class="icon-btn close" id="closeMenu" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  <a href="#cafe">Studio</a><a href="#sessions">Seat sessions</a><a href="#menu">Menu</a><a href="#locations">Locations</a><a href="#circle">Circle</a><a href="#visit">Visit</a><a href="index.html">Home</a>
+  <a href="#cafe">Studio</a><a href="#sessions">Seat sessions</a><a href="#menu">Menu</a><a href="#locations">Locations</a><a href="#circle">Circle</a><a href="#book">Book a seat</a><a href="#visit">Visit</a><a href="index.html">Home</a>
 </div>
 
 <section class="hero night photo-hero" id="hero">
@@ -147,6 +147,33 @@
 </section>
 
 <div class="wrap" style="padding-block:clamp(3rem,7vw,5rem) 0"><div class="appband reveal"><img src="img/app/today.webp" alt="App today screen"><div><span class="eyebrow">The app · coming soon to Android · games rated PEGI 7</span><h3 style="margin-top:.4rem">Keep the calm going at home</h3><p><b data-app>Ryan's Vibe</b> plans your routine and runs your device. It works offline.</p></div><a class="btn sm" href="devices.html#app">See the app</a></div></div>
+
+<section class="night" id="book">
+  <div class="wrap">
+    <div class="head reveal"><p class="eyebrow">Book a seat</p><h2>Pick your seat<br>before you arrive.</h2><p>Choose a seat on the floor plan, a day and a time, and the mood you want. We open soon, so for now this sends us a request and we'll hold the seat for opening week.</p></div>
+    <div class="book">
+      <div class="plan reveal">
+        <svg viewBox="0 0 640 420" id="planSvg" role="group" aria-label="Floor plan with 20 seats">
+          <rect x="6" y="6" width="628" height="408" rx="22" fill="none" stroke="#24403b" stroke-width="2"/>
+          <rect x="20" y="20" width="600" height="14" rx="7" fill="#123a44" opacity=".7"/><text x="320" y="56" text-anchor="middle" class="pl">WINDOW · STREET SIDE</text>
+          <rect x="470" y="300" width="150" height="100" rx="14" fill="#14262a"/><text x="545" y="356" text-anchor="middle" class="pl">COUNTER</text>
+          <rect x="20" y="370" width="90" height="30" rx="8" fill="#14262a"/><text x="65" y="390" text-anchor="middle" class="pl">DOOR</text>
+          <g id="seats"></g>
+        </svg>
+        <div class="plan-key"><span><i class="k-free"></i>Free</span><span><i class="k-pick"></i>Your seat</span><span><i class="k-held"></i>Already requested</span></div>
+      </div>
+      <div class="book-side reveal">
+        <div class="bk-seat" id="bkSeat"><small>Your seat</small><b>Tap a seat on the plan</b><span>Every seat has a frequency pad</span></div>
+        <div class="opt-group"><span>Day</span><div class="chips-row" id="bkDay"></div></div>
+        <div class="opt-group"><span>Time</span><div class="chips-row" id="bkTime"></div></div>
+        <div class="opt-group"><span>Mood</span><div class="chips-row" id="bkMood"></div></div>
+        <div class="opt-group"><span>People</span><div class="chips-row" id="bkPpl"></div></div>
+        <button class="btn mint" id="bkGo" disabled>Request this seat</button>
+        <p class="muted" style="font-size:.85rem">No payment. Opens an email to us with your choices, and we reply to confirm.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="visit">
   <div class="wrap">

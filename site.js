@@ -241,13 +241,15 @@ const BEANS=[
  {n:'Pang Khon',r:'Chiang Rai',alt:'about 1,300 m',pr:'Natural',notes:['Strawberry','Dark chocolate','Red wine-like'],roast:4,price:560,c:'linear-gradient(140deg,#5a2f4a,#a0577a)'}
 ];
 const plusI='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>';
+let beanPlan=0;const BEAN_PLANS=[['One bag',''],['Every 2 weeks',' · every 2 weeks'],['Every 4 weeks',' · every 4 weeks']];
+(function(){const h=document.querySelector('.beans-head');if(!h||!document.getElementById('beans'))return;const t=document.createElement('div');t.className='sub-tog';t.setAttribute('role','group');t.setAttribute('aria-label','How often');t.innerHTML=BEAN_PLANS.map((p,i)=>`<button data-bp="${i}" aria-pressed="${i===0}">${p[0]}${i?' <em>-10%</em>':''}</button>`).join('');h.after(t);t.onclick=e=>{const b=e.target.closest('[data-bp]');if(!b)return;beanPlan=+b.dataset.bp;t.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));document.querySelectorAll('#beans [data-bprice]').forEach(el=>{const p=+el.dataset.bprice;el.textContent=thb(beanPlan?Math.round(p*.9/10)*10:p)})}})();
 $('beans').innerHTML=BEANS.map((b,i)=>`<article class="bean reveal"><div class="bag-art" style="--bc:${b.c};--bi:url(img/photo/${['coffee-beans','coffee-cupping','coffee-portafilter'][i%3]}.jpg)"><b><small>${b.r}</small>${b.n}</b></div>
   <dl><dt>Altitude</dt><dd>${b.alt}</dd><dt>Process</dt><dd>${b.pr}</dd><dt>Roast</dt><dd><span class="roast" aria-label="Roast ${b.roast} of 5">${[1,2,3,4,5].map(k=>`<i class="${k<=b.roast?'f':''}"></i>`).join('')}</span></dd></dl>
   <div class="notes">${b.notes.map(n=>`<span>${n}</span>`).join('')}</div>
-  <div class="foot"><b>${thb(b.price)} <small class="muted" style="font:400 .8rem var(--f-b)">250 g</small></b><button class="add" data-bean="${i}" aria-label="Add ${b.n} beans">${plusI}</button></div></article>`).join('');
+  <div class="foot"><b><span data-bprice="${b.price}">${thb(b.price)}</span> <small class="muted" style="font:400 .8rem var(--f-b)">250 g</small></b><button class="add" data-bean="${i}" aria-label="Add ${b.n} beans">${plusI}</button></div></article>`).join('');
 document.querySelectorAll('#beans .reveal').forEach(watchReveal);
 $('beans').onclick=e=>{const a=e.target.closest('[data-bean]');if(!a)return;const b=BEANS[+a.dataset.bean];
-  addToBag({key:'bean-'+a.dataset.bean,name:b.n+' beans',opt:'250 g',price:b.price,bean:b.c})};
+  addToBag({key:'bean-'+a.dataset.bean+'-'+beanPlan,name:b.n+' beans',opt:'250 g'+BEAN_PLANS[beanPlan][1],price:beanPlan?Math.round(b.price*.9/10)*10:b.price,bean:b.c})};
 
 /* ---------- Device finder ---------- */
 const FQ=[['Pocket','Wrist','Glasses'],['Lowest price','Biggest screen','Longest battery','Looks','Easiest to use'],['Day and work','Training','Evening and sleep']];
@@ -477,3 +479,47 @@ const APPS=[['today','Today','Your day, your wellness score and what is next.'],
   if(!('IntersectionObserver' in window))return;
   const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){const p=v.play();p&&p.catch(()=>{})}else v.pause()}),{threshold:.05});
   vs.forEach(v=>io.observe(v));})();
+
+/* ---------- Seat booking floor plan ---------- */
+(function(){const g=document.getElementById('seats');if(!g)return;
+  const SEATS=[];let n=1;
+  [70,150,230,310,390,470,550].forEach(x=>SEATS.push({id:'W'+n++,x,y:90,t:'Window bar stool',z:'Window'}));
+  n=1;[[110,190],[110,280],[250,190],[250,280]].forEach(([x,y])=>{SEATS.push({id:'L'+n++,x:x-26,y,t:'Lounge armchair',z:'Lounge'});SEATS.push({id:'L'+n++,x:x+26,y,t:'Lounge armchair',z:'Lounge'})});
+  n=1;[[400,180],[400,250],[540,180],[540,250],[400,330]].forEach(([x,y])=>SEATS.push({id:'B'+n++,x,y,t:'Quiet booth seat',z:'Booth'}));
+  const held=new Set(['L3','W5','B2']);let pick=null;
+  const tables=[[110,190],[110,280],[250,190],[250,280]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="13" fill="#1d3a35"/>`).join('');
+  g.innerHTML=tables+SEATS.map(s=>`<g class="seat${held.has(s.id)?' held':''}" data-id="${s.id}" tabindex="${held.has(s.id)?-1:0}" role="button" aria-label="${s.t} ${s.id}${held.has(s.id)?', already requested':''}"><rect x="${s.x-17}" y="${s.y-17}" width="34" height="34" rx="${s.z==='Lounge'?12:8}"/><text x="${s.x}" y="${s.y+4}" text-anchor="middle">${s.id}</text></g>`).join('');
+  const days=[...Array(7)].map((_,i)=>{const d=new Date(Date.now()+i*864e5);return i===0?'Today':i===1?'Tomorrow':d.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'})});
+  const times=['09:00','11:00','13:00','15:00','17:00','19:00','21:00','22:30'];
+  const st={day:days[0],time:'15:00',mood:'Calm',ppl:'1'};
+  function chips(id,arr,key){const el=document.getElementById(id);el.innerHTML=arr.map(v=>`<button aria-pressed="${st[key]===v}">${v}</button>`).join('');el.onclick=e=>{const b=e.target.closest('button');if(!b)return;st[key]=b.textContent;el.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b))}}
+  chips('bkDay',days,'day');chips('bkTime',times,'time');chips('bkMood',SESSIONS.map(s=>s.k),'mood');chips('bkPpl',['1','2','3','4'],'ppl');
+  const box=document.getElementById('bkSeat'),go=document.getElementById('bkGo');
+  function choose(el){if(!el||el.classList.contains('held'))return;g.querySelectorAll('.seat').forEach(x=>x.classList.toggle('pick',x===el));pick=SEATS.find(s=>s.id===el.dataset.id);
+    box.innerHTML=`<small>Your seat</small><b>${pick.id} · ${pick.t}</b><span>${pick.z==='Window'?'Street view, good for laptops':pick.z==='Lounge'?'Soft and low, best for evening moods':'Tucked away and quiet, best for Deep Rest'}</span>`;go.disabled=false}
+  g.onclick=e=>choose(e.target.closest('.seat'));g.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose(e.target.closest('.seat'))}};
+  go.onclick=()=>{if(!pick)return;const body=`Hi, I'd like to request a seat.\n\nSeat: ${pick.id} (${pick.t})\nDay: ${st.day}\nTime: ${st.time}\nMood: ${st.mood}\nPeople: ${st.ppl}\n\nName:\nPhone or LINE:`;location.href=`mailto:${EMAIL}?subject=${encodeURIComponent(BRAND+' seat request')}&body=${encodeURIComponent(body)}`};
+})();
+
+/* ---------- Mini Pod scroll story ---------- */
+(function(){const steps=document.querySelectorAll('.st');if(!steps.length)return;const pod=document.getElementById('stPod'),ring=document.getElementById('stRing'),chip=document.getElementById('stChip');
+  function set(a){steps.forEach(s=>s.classList.toggle('on',s===a));const c=a.dataset.c;ring.style.setProperty('--c',c);chip.style.setProperty('--c',c);chip.lastElementChild.textContent=a.dataset.chip;pod.style.transform=`rotate(${a.dataset.r}deg) scale(${a.dataset.s})`}
+  if(!('IntersectionObserver' in window))return;
+  const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)set(e.target)}),{rootMargin:'-45% 0px -45% 0px'});steps.forEach(s=>io2.observe(s));})();
+
+/* ---------- Heading line reveal ---------- */
+(function(){if(RM||!('IntersectionObserver' in window))return;const hs=document.querySelectorAll('.head h2, .circle h2, .visit h2');
+  const io3=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('lines-in');io3.unobserve(e.target)}}),{threshold:.2});
+  hs.forEach(h=>{if(h.getBoundingClientRect().top<innerHeight)return;h.innerHTML=h.innerHTML.split(/<br\s*\/?>/i).map((l,i)=>`<span class="ln"><span style="--i:${i}">${l}</span></span>`).join('');h.classList.add('lines');io3.observe(h)})})();
+
+/* ---------- Door cursor (desktop) ---------- */
+(function(){const door=document.querySelector('.door');if(!door||RM||!matchMedia('(pointer:fine)').matches)return;
+  const c=document.createElement('div');c.className='door-cur';c.innerHTML='<span>Enter</span>';document.body.appendChild(c);
+  let x=innerWidth/2,y=innerHeight/2,tx=x,ty=y;
+  door.addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY;const h=e.target.closest('.half');c.classList.toggle('on',!!h&&!e.target.closest('.go'));c.classList.toggle('dev',!!h&&h.classList.contains('dev'));c.firstChild.textContent=h&&h.classList.contains('dev')?'Shop':'Enter'});
+  door.addEventListener('pointerleave',()=>c.classList.remove('on'));
+  (function loop(){x+=(tx-x)*.18;y+=(ty-y)*.18;c.style.transform=`translate(${x}px,${y}px)`;requestAnimationFrame(loop)})();})();
+
+/* ---------- Scroll progress ---------- */
+(function(){if(document.querySelector('.door'))return;const b=document.createElement('div');b.className='sprog';document.body.appendChild(b);
+  const u=()=>{const h=document.documentElement;b.style.transform=`scaleX(${Math.min(1,h.scrollTop/Math.max(1,h.scrollHeight-innerHeight))})`};addEventListener('scroll',u,{passive:true});u()})();
