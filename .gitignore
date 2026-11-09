@@ -1,0 +1,13 @@
+# Never publish
+*.jks
+*.keystore
+*.p12
+*.pem
+*.key
+.env
+.env.*
+*.md
+src/
+node_modules/
+build*.sh
+*.py
