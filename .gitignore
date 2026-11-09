@@ -1,0 +1,8 @@
+*.jks
+*.keystore
+*.p12
+*.pem
+*.key
+.env
+.env.*
+node_modules/
