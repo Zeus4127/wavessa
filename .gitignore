@@ -1,0 +1,12 @@
+# never publish keys or secrets
+*.jks
+*.keystore
+*.p12
+*.pem
+*.key
+.env*
+key-password.txt
+*.map
+*.py
+*.md
+node_modules/
