@@ -1,0 +1,195 @@
+<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}</style><title>Wavessa app waitlist</title><meta name="description" content="Reserve a founding spot for the Wavessa app: plan, time and track every session on the frequency device you already own."><meta name="theme-color" content="#2f8fc9"></head><body>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
+<style>
+/* Layout: one calm column; hero, what it does, founding offer, then a short sign-up + survey form. */
+:root{
+  --bg:#f4f7f7; --surface:#ffffff; --ink:#132227; --muted:#52636a; --line:#d6e0e2;
+  --accent:#0f6f86; --accent-ink:#ffffff; --accent-soft:#e0f0f3; --ok:#26734a; --ok-soft:#e3f2e9; --warn-soft:#fbf1dd;
+  --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+}
+
+
+*,*::before,*::after{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:17px/1.6 var(--f-body);margin:0}
+.wrap{max-width:720px;margin:0 auto;padding-block:28px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:36px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;margin:0;text-wrap:balance}
+h1{font-size:clamp(2rem,7vw,3.1rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:1.5rem;font-weight:800}
+h3{font-size:1.05rem;font-weight:600}
+p{margin:0}
+.kicker{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.lede{font-size:1.15rem;color:var(--muted);max-width:60ch}
+.hero{display:flex;flex-direction:column;gap:14px}
+.shots{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.shots{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:6px}.shots img{display:block;width:100%;height:auto;border-radius:10px}
+.queue{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.9rem}
+.queue span{background:var(--accent-soft);color:var(--ink);border-radius:999px;padding:4px 12px;font-variant-numeric:tabular-nums}
+.queue i{color:var(--muted);font-style:normal}
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.feats div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.feats p{color:var(--muted);font-size:.97rem}
+.offer{background:var(--surface);border:2px solid var(--accent);border-radius:16px;padding:20px;display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between}
+.price{font-family:var(--f-display);font-weight:800;font-size:2.2rem;line-height:1}
+.price small{font-family:var(--f-body);font-size:.95rem;font-weight:400;color:var(--muted)}
+.offer ul{margin:0;padding-left:18px;color:var(--muted);font-size:.95rem}
+form{display:flex;flex-direction:column;gap:22px}
+fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;min-width:0}
+legend{font-weight:700;padding:0;margin-bottom:8px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts label{position:relative}
+.opts input{position:absolute;opacity:0;inset:0;margin:0}
+.opts span{display:inline-block;border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;font-size:.95rem;cursor:pointer}
+.opts input:checked+span{border-color:var(--accent);background:var(--accent-soft);font-weight:700}
+.opts input:focus-visible+span{outline:3px solid var(--accent);outline-offset:2px}
+.opts.big{flex-direction:column}
+.opts.big span{border-radius:12px;display:block}
+.scale span{min-width:48px;text-align:center}
+.hint{color:var(--muted);font-size:.85rem}
+input[type=email]{font:inherit;width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);min-height:50px}
+input[type=email]:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
+.btn{font:inherit;font-weight:700;border:0;border-radius:12px;background:var(--accent);color:var(--accent-ink);padding:14px 22px;min-height:52px;cursor:pointer;align-self:flex-start}
+.btn:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.btn:disabled{opacity:.55;cursor:wait}
+.note{border-radius:12px;padding:12px 14px;font-size:.95rem}
+.note.ok{background:var(--ok-soft)}
+.note.warn{background:var(--warn-soft)}
+.sec{display:flex;flex-direction:column;gap:16px}
+footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:18px;display:flex;flex-direction:column;gap:6px}
+@media (prefers-reduced-motion: no-preference){.btn{transition:transform .12s}.btn:active{transform:translateY(1px)}}
+</style>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="kicker">For PEMF and frequency device owners</div>
+    <h1>Know exactly what to run, and see if it's working.</h1>
+    <p class="lede">Wavessa plans, times and tracks every session on the device you already own. Build a weekly routine, run several programs back to back, and check in to see how your sleep and energy change.</p>
+    <div class="queue" aria-label="Example evening queue"><span>Brain Wave Theta · 30 min</span><i>then</i><span>Earth 7.83 Hz · 20 min</span><i>then</i><span>Brain Wave Delta · 30 min</span></div>
+    <figure class="shots" style="margin:0"><img src="../v2/img/app/today.webp" alt="Wavessa app: today's check-in" loading="lazy"><img src="../v2/img/app/routine.webp" alt="Wavessa app: weekly routine" loading="lazy"><img src="../v2/img/app/month.webp" alt="Wavessa app: monthly tracker" loading="lazy"><img src="../v2/img/app/breathe.webp" alt="Wavessa app: breathing timer" loading="lazy"></figure>
+  </section>
+
+  <section class="feats" aria-label="What it does">
+    <div><h3>A plan in one minute</h3><p>Pick your goals and a full week is built for you. Change anything after.</p></div>
+    <div><h3>Works with your device</h3><p>Load your device's menu, and the app tells you which item to pick, when to press start and what's next.</p></div>
+    <div><h3>See your own trend</h3><p>A 10-second daily check-in on sleep, energy and mood shows how you feel week by week.</p></div>
+  </section>
+
+  <section class="offer" aria-label="Founding member offer">
+    <div><div class="kicker">Founding members, first 500 only</div><div class="price">A$19.99 <small>a year for Premium, for life</small></div></div>
+    <ul><li>Later price A$29.99 a year</li><li>Free version always available</li><li>Nothing to pay today</li></ul>
+  </section>
+
+  <section class="sec" id="join">
+    <h2>Reserve your spot</h2>
+    <p class="hint">Takes about 2 minutes. Your answers shape what gets built first. Only the email is needed.</p>
+    <form name="waitlist" id="wl" method="POST">
+      
+      <p hidden><label>Leave empty <input name="company" id="company"></label></p>
+
+      <fieldset><legend><label for="email">Your email</label></legend>
+        <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
+      </fieldset>
+
+      <fieldset><legend>What device do you use?</legend><div class="opts">
+        <label><input type="radio" name="device" value="Vibe" id="d1"><span>Vibe</span></label>
+        <label><input type="radio" name="device" value="Healy" id="d2"><span>Healy</span></label>
+        <label><input type="radio" name="device" value="PEMF mat" id="d3"><span>PEMF mat</span></label>
+        <label><input type="radio" name="device" value="Other" id="d4"><span>Other</span></label>
+        <label><input type="radio" name="device" value="None yet" id="d5"><span>None yet</span></label>
+      </div></fieldset>
+
+      <fieldset><legend>How often do you use it?</legend><div class="opts">
+        <label><input type="radio" name="often" value="Daily" id="o1"><span>Daily</span></label>
+        <label><input type="radio" name="often" value="Few times a week" id="o2"><span>A few times a week</span></label>
+        <label><input type="radio" name="often" value="Weekly" id="o3"><span>Weekly</span></label>
+        <label><input type="radio" name="often" value="Rarely" id="o4"><span>Rarely</span></label>
+      </div></fieldset>
+
+      <fieldset><legend>How do you choose what to run?</legend><div class="opts">
+        <label><input type="radio" name="choose" value="Booklet" id="c1"><span>Device booklet</span></label>
+        <label><input type="radio" name="choose" value="Company" id="c2"><span>Company advice</span></label>
+        <label><input type="radio" name="choose" value="Practitioner" id="c3"><span>A practitioner</span></label>
+        <label><input type="radio" name="choose" value="Online groups" id="c4"><span>Online groups</span></label>
+        <label><input type="radio" name="choose" value="Guess" id="c5"><span>I guess</span></label>
+      </div></fieldset>
+
+      <fieldset><legend>How hard is it to know what to run and for how long?</legend><div class="opts scale">
+        <label><input type="radio" name="hard" value="1" id="h1"><span>1</span></label>
+        <label><input type="radio" name="hard" value="2" id="h2"><span>2</span></label>
+        <label><input type="radio" name="hard" value="3" id="h3"><span>3</span></label>
+        <label><input type="radio" name="hard" value="4" id="h4"><span>4</span></label>
+        <label><input type="radio" name="hard" value="5" id="h5"><span>5</span></label>
+      </div><p class="hint">1 is easy, 5 is very hard</p></fieldset>
+
+      <fieldset><legend>Do you track your sessions or how you feel?</legend><div class="opts">
+        <label><input type="radio" name="track" value="Paper" id="t1"><span>Yes, on paper</span></label>
+        <label><input type="radio" name="track" value="App" id="t2"><span>Yes, in an app</span></label>
+        <label><input type="radio" name="track" value="No, would like to" id="t3"><span>No, but I'd like to</span></label>
+        <label><input type="radio" name="track" value="No" id="t4"><span>No</span></label>
+      </div></fieldset>
+
+      <fieldset><legend>Which would you want most?</legend><div class="opts big">
+        <label><input type="radio" name="angle" value="A planner" id="a1"><span>A planner that builds my weekly routine</span></label>
+        <label><input type="radio" name="angle" value="B tracker" id="a2"><span>A tracker that shows if I'm sleeping and feeling better</span></label>
+        <label><input type="radio" name="angle" value="C works with device" id="a3"><span>An app that works with my device: menu, timer and queue</span></label>
+        <label><input type="radio" name="angle" value="D practitioner" id="a4"><span>A tool so my practitioner can set my routine</span></label>
+      </div></fieldset>
+
+      <fieldset><legend>Would you pay for an app like this?</legend><div class="opts">
+        <label><input type="radio" name="pay" value="No" id="p1"><span>No</span></label>
+        <label><input type="radio" name="pay" value="2.99/mo" id="p2"><span>Up to A$2.99 a month</span></label>
+        <label><input type="radio" name="pay" value="4.99/mo" id="p3"><span>A$4.99 a month</span></label>
+        <label><input type="radio" name="pay" value="9.99/mo" id="p4"><span>A$9.99 a month</span></label>
+        <label><input type="radio" name="pay" value="29.99/yr" id="p5"><span>A$29.99 a year</span></label>
+      </div></fieldset>
+
+      <fieldset><legend>Your age</legend><div class="opts">
+        <label><input type="radio" name="age" value="<25" id="g1"><span>Under 25</span></label>
+        <label><input type="radio" name="age" value="25-39" id="g2"><span>25–39</span></label>
+        <label><input type="radio" name="age" value="40-54" id="g3"><span>40–54</span></label>
+        <label><input type="radio" name="age" value="55-69" id="g4"><span>55–69</span></label>
+        <label><input type="radio" name="age" value="70+" id="g5"><span>70+</span></label>
+      </div></fieldset>
+
+      <fieldset><legend>Gender</legend><div class="opts">
+        <label><input type="radio" name="gender" value="Female" id="s1"><span>Female</span></label>
+        <label><input type="radio" name="gender" value="Male" id="s2"><span>Male</span></label>
+        <label><input type="radio" name="gender" value="Other" id="s3"><span>Other</span></label>
+        <label><input type="radio" name="gender" value="Prefer not to say" id="s4"><span>Prefer not to say</span></label>
+      </div></fieldset>
+
+      <button type="submit" class="btn" id="go">Reserve my founding spot</button>
+      <p class="note warn" id="preview" hidden>This is a preview. Answers are saved only once the page is live on its own website.</p>
+      <p class="note ok" id="thanks" hidden role="status">You're on the list. We'll email you when Wavessa opens, with your founding price.</p>
+      <p class="note warn" id="err" hidden role="alert">That didn't send. Check your connection and try again.</p>
+    </form>
+  </section>
+
+  <footer>
+    <p>Wavessa is a wellness planner. It doesn't diagnose, treat or cure any condition, and it isn't a medical device. Talk to your GP about any health concern.</p>
+    <p>Wavessa is independent and isn't connected to any device maker. Device names are used only to describe compatibility.</p>
+    <p>We use your email only to tell you about Wavessa. Unsubscribe any time. <a href="privacy.html">Privacy</a> · <a href="../v2/">Wavessa home</a></p>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var f = document.getElementById("wl"), go = document.getElementById("go");
+  var live = !/claude\.ai|claudeusercontent|^$/.test(location.hostname) && location.protocol.indexOf("http") === 0;
+  if (!live) document.getElementById("preview").hidden = false;
+  f.addEventListener("submit", function(e){
+    e.preventDefault();
+    if (!f.reportValidity()) return;
+    document.getElementById("err").hidden = true;
+    if (!live){ document.getElementById("preview").hidden = false; return; }
+    go.disabled = true;
+    var body = new URLSearchParams(new FormData(f)).toString();
+    (document.getElementById("company").value?Promise.resolve({ok:true}):fetch("https://formsubmit.co/ajax/wavessaa@outlook.com", {method: "POST", headers: {"Content-Type": "application/json", "Accept": "application/json"}, body: JSON.stringify(Object.assign(Object.fromEntries(new URLSearchParams(body)), {_subject: "New Wavessa app waitlist sign-up", _template: "table", _captcha: "false", page: location.href}))}))
+      .then(function(r){ if (!r.ok) throw 0; f.querySelectorAll("fieldset,#go").forEach(function(x){ x.hidden = true; }); document.getElementById("thanks").hidden = false; })
+      .catch(function(){ document.getElementById("err").hidden = false; go.disabled = false; });
+  });
+})();
+</script>
+</body></html>
