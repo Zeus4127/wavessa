@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Wavessa app preview · Android</title>
+<meta name="description" content="Try the Wavessa app preview on Android: download, install steps and a QR code to share.">
+<meta name="theme-color" content="#17324d">
+<link rel="icon" href="../favicon.svg">
+<link rel="canonical" href="https://zeus4127.github.io/wavessa/app/">
+<style>
+:root{--ink:#17324d;--sub:#4a6178;--blue:#2f8fc9;--bg:#fff8ec;--card:#fff;--line:#e3d9c6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:760px;margin:0 auto;padding:24px 16px 96px}
+a{color:#1d6fa3}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.top a{font-weight:600;text-decoration:none}
+h1{font-size:clamp(28px,6vw,40px);line-height:1.1;margin:0 0 8px}
+h2{font-size:21px;margin:0 0 10px}
+.lead{color:var(--sub);margin:0 0 20px;font-size:17px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;margin:0 0 16px}
+.hero{display:grid;gap:18px;grid-template-columns:1fr auto;align-items:center}
+.dl{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;text-decoration:none;font-weight:700;padding:14px 20px;border-radius:12px;font-size:17px}
+.dl:focus-visible,.btn:focus-visible{outline:3px solid #ffcf5c;outline-offset:2px}
+.meta{color:var(--sub);font-size:14px;margin:10px 0 0}
+.qr{text-align:center;font-size:13px;color:var(--sub)}
+.qr img{display:block;width:168px;height:168px;border-radius:10px;border:1px solid var(--line)}
+ol{margin:0;padding-left:22px}ol li{margin:0 0 10px}
+.btn{font:700 15px system-ui,sans-serif;border:1px solid var(--line);background:#eef3f8;color:var(--ink);border-radius:10px;padding:10px 14px;cursor:pointer}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.note{background:#fff3cd;border-color:#f0dc9a}
+code{background:#f1ece2;border-radius:6px;padding:1px 6px;font-size:14px}
+@media (max-width:560px){.hero{grid-template-columns:1fr}.qr{display:none}}
+</style>
+</head>
+<body>
+<main>
+  <div class="top"><a href="../v2/">← Wavessa</a><a href="../waitlist/">iPhone? Join the waitlist</a></div>
+
+  <h1>Try the Wavessa app</h1>
+  <p class="lead">Plan your sessions, time them and track how you feel. This is an early preview for testers on Android phones. It works offline and keeps your data on your phone.</p>
+
+  <section class="card hero" aria-labelledby="getH">
+    <div>
+      <h2 id="getH">Download for Android</h2>
+      <a class="dl" href="Wavessa-preview-v1.9.20.apk" download>⬇ Download the app (1.7 MB)</a>
+      <p class="meta">Version 1.9.20 preview · Android phones · Not on Google Play yet</p>
+    </div>
+    <div class="qr"><img src="qr.svg" alt="QR code that opens this page" width="168" height="168">On a computer? Scan with your phone.</div>
+  </section>
+
+  <section class="card" aria-labelledby="howH">
+    <h2 id="howH">How to install (about 1 minute)</h2>
+    <ol>
+      <li>Open this page <strong>on your Android phone</strong> and tap <strong>Download the app</strong>.</li>
+      <li>When the download finishes, tap <strong>Open</strong> (or find <code>Wavessa-preview-v1.9.20.apk</code> in your Downloads).</li>
+      <li>If your phone says it can't install apps from this source, tap <strong>Settings</strong>, turn on <strong>Allow from this source</strong> for your browser, then go back.</li>
+      <li>Tap <strong>Install</strong>. If Google Play Protect warns that it doesn't recognise the app, tap <strong>More details → Install anyway</strong>. That warning shows for any app that isn't from the Play Store yet.</li>
+      <li>Open <strong>Wavessa</strong> from your home screen and follow the short tour.</li>
+    </ol>
+    <p class="meta">Updating: download the newer file and install it over the top. Your data stays. To remove it, long-press the icon and choose Uninstall.</p>
+  </section>
+
+  <section class="card" aria-labelledby="shareH">
+    <h2 id="shareH">Share with a tester</h2>
+    <p class="meta" style="margin:0 0 10px">Send this link to anyone with an Android phone:</p>
+    <div class="row"><code id="link">zeus4127.github.io/wavessa/app/</code><button class="btn" id="share" type="button">Share link</button><span id="shareMsg" role="status" class="meta" style="margin:0"></span></div>
+  </section>
+
+  <section class="card note" aria-labelledby="tellH">
+    <h2 id="tellH">Tell us what you find</h2>
+    <p style="margin:0">Tap <strong>Feedback</strong> (bottom left) on any page, or email <a href="mailto:wavessaa@outlook.com?subject=Wavessa%20app%20preview%20feedback">wavessaa@outlook.com</a>. Say what phone you have, what you tapped and what happened.</p>
+  </section>
+
+  <p class="meta">This app gives general wellness information only. It isn't a medical device and doesn't diagnose or treat anything. In an emergency call 000. <a href="../v2/privacy.html">Privacy</a></p>
+</main>
+<script>
+(function(){var u='https://zeus4127.github.io/wavessa/app/',b=document.getElementById('share'),m=document.getElementById('shareMsg');
+b.onclick=function(){if(navigator.share){navigator.share({title:'Wavessa app preview',text:'Try the Wavessa app preview (Android):',url:u}).catch(function(){});return}
+if(navigator.clipboard){navigator.clipboard.writeText(u).then(function(){m.textContent='Link copied'},function(){m.textContent='Copy the link above'})}else{m.textContent='Copy the link above'}};})();
+</script>
+<script src="../preview.js" defer></script>
+</body>
+</html>
